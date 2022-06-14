@@ -34,8 +34,8 @@ The material endpoint is used to create, read, update and delete records. The ht
 *sap_blocked* - Can be 0 (available) and 1 (blocked)<br>
 *sap_additional* - Addition information provided (e.g. storage position and amount)<br>
 
-**Read releated**<br>
-*id* - primary key of the material
+**Delete releated**<br>
+*id* - primary key of the material<br>
 
 ## Example
 http://server.com/?token=123&api=material&action=c&title=ethanol&sap_matno=123&sap_blocked=0&sap_additonal=Shelf_112_Pitch_14

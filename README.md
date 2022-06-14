@@ -38,4 +38,4 @@ The material endpoint is used to create, read, update and delete records. The ht
 *id* - primary key of the material
 
 ## Example
-http://server.com/?token=123&api=material&action=c&title=ethanol&sap_matno=123&sap_blocked=0&sap_additonal=Shelf_112_Pith_14
+http://server.com/?token=123&api=material&action=c&title=ethanol&sap_matno=123&sap_blocked=0&sap_additonal=Shelf_112_Pitch_14

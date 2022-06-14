@@ -64,12 +64,18 @@ try {
 			
 			switch ($action) {
 				case 'c':
+					if ($title == Null Or $sap_matno == Null Or $sap_blocked == Null Or $sap_additionals == Null) {
+						throw new Exception('Missing parameters.');
+					}
 					$stmt = sqlsrv_query( $con, 'INSERT INTO material (title, sap_matno, sap_blocked, sap_additionals) VALUES(?, ?, ?, ?)', array(&$title, &$sap_matno, &$sap_blocked, &$sap_additionals));
 					if( $stmt === false ) {
 						 throw new Exception('Failed to insert dataset.');
 					}
 					break;
 				case 'r':
+					if ($sap_matno == Null) {
+						throw new Exception('Missing parameters.');
+					}
 					$stmt = sqlsrv_query( $con, 'SELECT * FROM material WHERE sap_matno = ?', array(&$sap_matno));
 					if( $stmt === false ) {
 						 throw new Exception('Failed to read dataset.');
@@ -81,14 +87,18 @@ try {
 					echo json_encode( [ $res ] );
 					break;
 				case 'u':
-					If ($id == Null) { throw new Exception('E08'); }
+					if ($id == Null Or $title == Null Or $sap_matno == Null Or $sap_blocked == Null Or $sap_additionals == Null) {
+						throw new Exception('Missing parameters.');
+					}
 					$stmt = sqlsrv_query( $con, 'UPDATE material SET title = ?, sap_matno = ?, sap_blocked = ?, sap_additionals = ? WHERE id = ?', array(&$title, &$sap_matno, &$sap_blocked, &$sap_additionals, &$id));
 					if( $stmt === false ) {
 						 throw new Exception('Failed to update dataset.');
 					}
 					break;
 				case 'd':
-					If ($id == Null) { throw new Exception('E08'); }
+					if ($id == Null) {
+						throw new Exception('Missing parameters.');
+					}
 					$stmt = sqlsrv_query( $con, 'DELETE FROM material WHERE id = ?', array(&$id));
 					if( $stmt === false ) {
 						 throw new Exception('Failed to delete dataset.');

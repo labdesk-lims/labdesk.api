@@ -2,40 +2,40 @@
 
 
 # Introduction
-LABDESK.API is a bidirectional application interface to exchange data between labdesk and external applications.
-
-# Requirements
-This web api requires an apache server, php and ms-sql server driver.
+LABDESK.SAP is a bidirectional REST API to exchange data between LABDESK and SAP. Data can be fetched and written by http requests.
 
 # Licence
 LABDESK LIMS and its components are proprietary software. Further information is available at: https://labdesk.net/licence/
 
-# Material Endpoint
-The material endpoint is used to create, read, update and delete records. The http request has the following parameters:
+# The Skeleton
+The project structure of the API is implemented as follows:
 
-**Connection related:**<br>
-*token* - need to be created as a record in table *api* in the labdesk database in order to authenticate access<br>
-*api* - this is the endpoint, e.g. *material*<br>
-*action* - ref. CRUD<br>
+<pre>
+├── Controller
+│   └── Api
+│       ├── BaseController.php
+│       └── UserController.php
+├── inc
+│   ├── bootstrap.php
+│   └── config.php
+├── index.php
+└── Model
+    ├── Database.php
+    └── UserModel.php
+</pre>
 
-**Create releated**<br>
-*title* - title of the material<br>
-*sap_matno* - SAP material no<br>
-*sap_blocked* - Can be 0 (available) and 1 (blocked)<br>
-*sap_additional* - Addition information provided (e.g. storage position and amount)<br>
+- **index.php**: the entry-point of the application. It will act as a front-controller of the application.
+- **inc/config.php**: holds the configuration information of the application. Mainly, it will hold the database credentials.
+- **inc/bootstrap.php**: used to bootstrap the application by including the necessary files.
+- **Model/Database.php**: the database access layer which will be used to interact with the underlying database.
+- **Model/UserModel.php**: the User model file which implements the necessary methods to interact with the users table in the database.
+- **Controller/Api/BaseController.php**: a base controller file which holds common utility methods.
+- **Controller/Api/UserController.php**: the **user** controller file which holds the necessary application code to entertain REST API calls.
 
-**Read releated**<br>
-*sap_matno* - SAP material no<br>
-
-**Update releated**<br>
-*id* - primary key of the material<br>
-*title* - title of the material<br>
-*sap_matno* - SAP material no<br>
-*sap_blocked* - Can be 0 (available) and 1 (blocked)<br>
-*sap_additional* - Addition information provided (e.g. storage position and amount)<br>
-
-**Delete releated**<br>
-*id* - primary key of the material<br>
-
-## Example
-http://server.com/?token=123&api=material&action=c&title=ethanol&sap_matno=123&sap_blocked=0&sap_additonal=Shelf_112_Pitch_14
+# Calling the REST API
+## List records
+The endpoint of the API for listing table records looks like this: <br/>
+**structure**: https://localhost/index.php/{MODULE_NAME}/{METHOD_NAME}?limit={LIMIT_VALUE} <br/>
+**example**: http://localhost/index.php/material/list?limit=20
+## Fetch record
+## Write record

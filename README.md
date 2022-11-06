@@ -33,6 +33,12 @@ The project structure of the API is implemented as follows:
 - **Controller/Api/UserController.php**: the **user** controller file which holds the necessary application code to entertain REST API calls.
 
 # Calling the REST API
+## Security
+For all endpoints basic authentication is applied. The following credentials can be used to access the rest-api:
+- User: rest-api
+- Pass: Q8JfsYH4jKllJ98s
+The named credentials need to be added to your url request for all calls.
+**example:**: https://rest-api:Q8JfsYH4jKllJ98s@demo.labdesk.net
 ## List records
 The endpoint of the API for listing table records looks like this: <br/>
 **structure**: https://localhost/index.php/{MODULE_NAME}/{METHOD_NAME}?limit={LIMIT_VALUE} <br/>

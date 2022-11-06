@@ -21,16 +21,14 @@ class Database
     {
         try {
 			$stmt = sqlsrv_query( $this->connection, $query , $params);
-
-            $result = true;
-            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                $result[] = $row;
-            }
-            sqlsrv_free_stmt($stmt);
+			while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+						  $result[] = $row;
+					}
+			sqlsrv_free_stmt($stmt);
 			
             return $result;
         } catch(Exception $e) {
-            print $e->getMessage();
+            throw New Exception( $e->getMessage() );
         }
         return false;
     }

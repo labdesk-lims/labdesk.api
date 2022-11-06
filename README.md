@@ -36,8 +36,8 @@ The project structure of the API is implemented as follows:
 ## Security
 For all endpoints basic authentication is applied. The following credentials can be used to access the rest-api:
 - User: rest-api
-- Pass: Q8JfsYH4jKllJ98s
-The named credentials need to be added to your url request for all calls.
+- Pass: Q8JfsYH4jKllJ98s<br/>
+The named credentials need to be added to your url request for all calls. <br/>
 **example:**: https://rest-api:Q8JfsYH4jKllJ98s@demo.labdesk.net
 ## List records
 The endpoint of the API for listing table records looks like this: <br/>

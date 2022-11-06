@@ -12,5 +12,15 @@ class MaterialModel extends Database
     {
         return $this->executeStatement("SELECT * FROM material WHERE id=?", [$id]);
     }
+
+    public function setMaterial($sap_matno, $sap_blocked, $sap_additionals, $title)
+    {
+        return $this->executeStatement("INSERT INTO material (sap_matno, sap_blocked, sap_additionals, title) VALUES (?, ?, ?, ?)", array($sap_matno, $sap_blocked, $sap_additionals, $title));
+    }
+
+    public function updateMaterial($id, $sap_blocked, $sap_additionals, $title)
+    {
+        return $this->executeStatement("UPDATE material SET sap_blocked = ?, sap_additionals = ?, title = ? WHERE id = ?", array($sap_blocked, $sap_additionals, $title, $id));
+    }
 }
 ?>

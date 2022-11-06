@@ -38,11 +38,18 @@ For all endpoints basic authentication is applied. The following credentials can
 - User: rest-api
 - Pass: Q8JfsYH4jKllJ98s
 
-The named credentials need to be added to your url request for all calls. <br/>
+The named credentials needs to be added to your url request for all calls. <br/>
 **example:**: https://rest-api:Q8JfsYH4jKllJ98s@demo.labdesk.net
 ## List records
 The endpoint of the API for listing table records looks like this: <br/>
 **structure**: https://localhost/index.php/{MODULE_NAME}/{METHOD_NAME}?limit={LIMIT_VALUE} <br/>
 **example**: http://localhost/index.php/material/list?limit=20
 ## Fetch record
+To fetch a specific material the id of the material has to be used: <br/>
+**example**: https://localhost/index.php/material/get?id=1
 ## Write record
+To write a new record the following json string needs to be used: <br/>
+**example**: https://localhost/index.php/material/set?json={"sap_matno":"123","sap_blocked":0,"sap_additionals":"text","sap_title":"my_material"}
+## Update record
+To update a record the following json string needs to be used: <br/>
+**example**: https://localhost/index.php/material/set?set?json={"id":123,"sap_blocked":0,"sap_additionals":"text","sap_title":"my_material"}

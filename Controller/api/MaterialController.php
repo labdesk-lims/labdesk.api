@@ -81,5 +81,36 @@ class MaterialController extends BaseController
             );
         }
     }
+
+    public function setAction()
+    {
+        $strErrorDesc = '';
+        $requestMethod = $_SERVER["REQUEST_METHOD"];
+        $arrQueryStringParams = $this->getQueryStringParams();
+
+        if (strtoupper($requestMethod) == 'GET') {
+            try {
+                $materialModel = new MaterialModel();
+
+                if (isset($arrQueryStringParams['json']) && $arrQueryStringParams['json']) {
+                    $obj = json_decode($arrQueryStringParams['json']);
+                }
+
+                if (isset($obj->{'id'})) {
+                    $materialModel->updateMaterial($obj->{'id'}, $obj->{'sap_blocked'}, $obj->{'sap_additionals'}, $obj->{'sap_title'});
+                } else
+                {
+                    $materialModel->setMaterial($obj->{'sap_matno'}, $obj->{'sap_blocked'}, $obj->{'sap_additionals'}, $obj->{'sap_title'});
+                }
+            
+            } catch (Error $e) {
+                $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
+                $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
+            }
+        } else {
+            $strErrorDesc = 'Method not supported';
+            $strErrorHeader = 'HTTP/1.1 422 Unprocessable Entity';
+        }
+    }
 }
 ?>

@@ -38,7 +38,7 @@ For all endpoints basic authentication is applied. The following credentials can
 - User: rest-api
 - Pass: Q8JfsYH4jKllJ98s
 
-The named credentials needs to be added to your url request for all calls. <br/>
+The credentials named need to be added to your url request for all calls. <br/>
 **example:**: https://rest-api:Q8JfsYH4jKllJ98s@demo.labdesk.net
 
 ## Materials

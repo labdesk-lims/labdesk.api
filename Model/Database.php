@@ -6,7 +6,7 @@ class Database
     public function __construct()
     {
         try {
-			$conInfo = array("Database"=>DB_DATABASE_NAME, "UID"=>DB_USERNAME, "PWD"=>DB_PASSWORD);
+			$conInfo = array("Database"=>DB_DATABASE_NAME, "APP"=>DB_APP, "UID"=>DB_USERNAME, "PWD"=>DB_PASSWORD);
 			$this->connection = sqlsrv_connect(DB_HOST, $conInfo);
 
             if ( !$this->connection ) {

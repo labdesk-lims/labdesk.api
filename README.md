@@ -2,7 +2,7 @@
 
 
 # Introduction
-LABDESK.SAP is a bidirectional REST API to exchange data between LABDESK and SAP. Data can be fetched and written by http requests.
+LABDESK.API is a bidirectional REST API to exchange data between LABDESK and external IT-Systems. Data can be fetched and written by http requests.
 
 # Licence
 LABDESK LIMS and its components are proprietary software. Further information is available at: https://labdesk.net/licence/

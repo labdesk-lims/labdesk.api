@@ -49,9 +49,6 @@ The endpoint of the API for listing table records looks like this: <br/>
 ### Fetch record
 To fetch a specific material the id of the material has to be used: <br/>
 **example**: https://localhost/index.php/material/get?id=1
-### Write record
-To write a new record the following json string needs to be used: <br/>
-**example**: https://localhost/index.php/material/set?json={"sap_matno":"123","sap_blocked":0,"sap_additionals":"text","sap_title":"my_material"}
-### Update record
-To update a record the following json string needs to be used: <br/>
-**example**: https://localhost/index.php/material/set?set?json={"id":123,"sap_blocked":0,"sap_additionals":"text","sap_title":"my_material"}
+### Create/Update record
+To create/update a record the following payload needs to be used: <br/>
+**example**: curl -i -k -X POST -H "Content-Type:application/json" -d "{""sap_matno"":"123",""sap_blocked"":"0",""sap_additionals"":""text"",""sap_title"":""my_material""}" https://localhost/index.php/material/set

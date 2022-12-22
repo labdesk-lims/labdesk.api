@@ -19,7 +19,7 @@ class MaterialController extends BaseController
                     $intLimit = $arrQueryStringParams['limit'];
                 }
  
-                $arrData = $materialModel->getMaterials($intLimit);
+                $arrData = $materialModel->listMaterial($intLimit);
                 $responseData = json_encode($arrData);
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
@@ -54,8 +54,8 @@ class MaterialController extends BaseController
                 $materialModel = new MaterialModel();
 
                 $id = 0;
-                if (isset($arrQueryStringParams['id']) && $arrQueryStringParams['id']) {
-                    $id = $arrQueryStringParams['id'];
+                if (isset($arrQueryStringParams['sap_matno']) && $arrQueryStringParams['sap_matno']) {
+                    $id = $arrQueryStringParams['sap_matno'];
                 }
  
                 $arrData = $materialModel->getMaterial($id);
@@ -88,21 +88,14 @@ class MaterialController extends BaseController
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();
 
-        if (strtoupper($requestMethod) == 'GET') {
+        if (strtoupper($requestMethod) == 'POST') {
             try {
                 $materialModel = new MaterialModel();
+                $obj = json_decode(file_get_contents('php://input'), true);
 
-                if (isset($arrQueryStringParams['json']) && $arrQueryStringParams['json']) {
-                    $obj = json_decode($arrQueryStringParams['json']);
+                If (!is_null($obj)) {
+                    $materialModel->setMaterial($obj['sap_matno'], $obj['sap_blocked'], $obj['sap_additionals'], $obj['sap_title']);
                 }
-
-                if (isset($obj->{'id'})) {
-                    $materialModel->updateMaterial($obj->{'id'}, $obj->{'sap_blocked'}, $obj->{'sap_additionals'}, $obj->{'sap_title'});
-                } else
-                {
-                    $materialModel->setMaterial($obj->{'sap_matno'}, $obj->{'sap_blocked'}, $obj->{'sap_additionals'}, $obj->{'sap_title'});
-                }
-            
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
                 $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';

@@ -8,7 +8,7 @@ class BaseController
     {
         $this->sendOutput('', array('HTTP/1.1 404 Not Found'));
     }
- 
+
     /**
      * Get URI elements.
      * 

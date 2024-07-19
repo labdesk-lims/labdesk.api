@@ -5,7 +5,7 @@
 LABDESK.API is a bidirectional REST API to exchange data between LABDESK and external IT-Systems. Data can be fetched and written by http requests.
 
 # Licence
-LABDESK LIMS and its components are available as licence software. Further information is available at: https://labdesk.net/licence/
+LABDESK LIMS and its components are available as free software. Further information is available at: https://labdesk.net/licence/
 
 # The Skeleton
 The project structure of the API is implemented as follows:
